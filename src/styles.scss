@@ -1,1 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+html {
+    color-scheme: light dark;
+    font-size: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    --custom-mat-on-surface: #333;
+
+    @include mat.theme((
+        color: mat.$cyan-palette,
+        typography: Verdana,
+        density: 0
+    ));
+}
+
+body {
+    background: var(--mat-sys-surface);
+    padding: 0px;
+    margin: 0px;
+    touch-action: manipulation;
+}
+
+.stackable {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stackable > li {
+    text-align: start;
+    display: inline-block;
+}
+
+.stacked {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stacked > li {
+    text-align: start;
+    display: inline-block;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    padding: 10px;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.rounded {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.flex {
+    display: flex;
+}
+
+button mat-icon {
+    color: var(--mat-sys-primary);
+}
+
+@media (prefers-color-scheme: light) {
+    html {
+        --custom-mat-on-surface: #ddd;
+    }
+}

@@ -1,0 +1,21 @@
+.features a {
+    text-decoration: none;
+    color: var(--mat-sys-on-surface);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.features a:hover {
+    background-color: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
+    transition: .2s;
+}
+
+.features li {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.features mat-icon {
+    vertical-align: middle;
+}

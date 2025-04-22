@@ -1,0 +1,65 @@
+<div id="tdControls">
+    <button mat-icon-button *ngIf="!_inspectTodo" (click)="toggleLists()">
+        <mat-icon>
+            menu
+        </mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="_inspectTodo" (click)="toTodos()">
+        <mat-icon>
+            arrow_back_ios_new
+        </mat-icon>
+    </button>
+    <span *ngIf="!_inspectTodo">{{getCurrentListName()}}</span>
+    <span *ngIf="_inspectTodo">{{getCurrentTodoName()}}</span>
+    <button class="rightBtn" mat-icon-button *ngIf="!_openLists" (click)="addFakeItem()">
+        <mat-icon>
+            add
+        </mat-icon>
+    </button>
+    <button class="rightBtn" mat-icon-button *ngIf="_openLists" (click)="addFakeList()">
+        <mat-icon>
+            add
+        </mat-icon>
+    </button>
+</div>
+<div class="todoContainer rounded centered" *ngIf="!_openLists && !_inspectTodo">
+    <ul class="stacked todos">
+        @for(todo of getCurrentList(); track todo) {
+            <li>
+                <ul class="todo clickable stacked">
+                    <li>
+                        <input class="clickable" type="checkbox" value="{{todo.completed}}">
+                        <ul class="stacked" (click)="inspectTodo(todo.id)">
+                            <li>{{todo.title}}</li>
+                            <li>{{todo.description}}</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="bar"></div>
+                    </li>
+                </ul>
+            </li>
+        }
+    </ul>
+</div>
+<div class="listContainer rounded centered" *ngIf="_openLists">
+    <ul class="stacked todos">
+        @for(list of lists; track list) {
+            <li (click)="switchList(list.id)">
+                <span>{{list.name}}</span>
+            </li>
+            <div class="bar"></div>
+        }
+    </ul>
+</div>
+<div *ngIf="_inspectTodo">
+    <div>
+        Title: {{getCurrentTodo().title}}
+    </div>
+    <div>
+        Desc: {{getCurrentTodo().description}}
+    </div>
+    <div>
+        Completed: {{getCurrentTodo().completed}}
+    </div>
+</div>
