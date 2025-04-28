@@ -7,12 +7,20 @@ html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
     --custom-mat-on-surface: #333;
+    --nav-bar-height: 55px;
+    --controls-height: 60px;
 
     @include mat.theme((
         color: mat.$cyan-palette,
         typography: Verdana,
         density: 0
     ));
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (max-device-width: 1024px) {
+    input, textarea {
+        font-size: 16px;
+    }
 }
 
 body {
@@ -80,8 +88,71 @@ body {
     display: flex;
 }
 
-button mat-icon {
+.rightBtn {
+    margin-left: auto;
+}
+
+.leftBtn {
+    margin-right: auto;
+}
+
+.block {
+    display: block;
+}
+
+.animated {
+    transition: 1s;
+}
+
+.animatedFast {
+    transition: .3s;
+}
+
+.animatedSlow {
+    transition: 2s;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.colorPrimary {
     color: var(--mat-sys-primary);
+}
+
+.colorError {
+    color: var(--mat-sys-error);
+}
+
+.displayNone {
+    display: none;
+}
+
+.hiddenContainer {
+    height: 0px;
+    width: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.hiddenSpan {
+    position: absolute;
+    overflow: hidden;
+    white-space: pre;
+    height: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.unhideContainer {
+    height: unset;
+    width: unset;
+    margin: unset;
+    padding: unset;
+}
+
+.unhideHeight {
+    height: unset;
 }
 
 @media (prefers-color-scheme: light) {

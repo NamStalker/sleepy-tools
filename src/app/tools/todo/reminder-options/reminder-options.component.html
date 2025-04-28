@@ -1,0 +1,10 @@
+<div class="reminderContainer">
+    <div mat-dialog-content>
+        <input [(ngModel)]="data.notifLength" />
+        <input [(ngModel)]="data.notifUnit" />
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="cancel()">Cancel</button>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    </div>
+</div>

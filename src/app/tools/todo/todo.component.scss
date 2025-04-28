@@ -5,6 +5,7 @@
     position: -webkit-sticky;
     top: 55px;
     background-color: var(--mat-sys-surface);
+    z-index: 10;
 }
 
 #tdControls > span {
@@ -73,17 +74,19 @@
     width: 100%;
 }
 
-.todo > li {
+.todo {
+    width: 100%;
+    margin-bottom: 2px;
     display: flex;
 }
 
-.todo > li > ul {
+.todo > ul {
     display: inline-block;
     max-width: calc(100% - 60px);
     height: 100%;
 }
 
-.todo > li > input {
+.todo > input {
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 10px;
@@ -92,24 +95,116 @@
     width: 32px;
 }
 
-.todo > li > ul > li {
+.todo > ul > li {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 12px;
 }
 
-.todo > li > ul > li:first-child {
+.todo > ul > li:first-child {
     font-size: 18px;
 }
 
-@media screen and (max-width: 700px) {
-    .bar {
-        display: none;
-    }
+.descField {
+    height: 200px;
+}
 
-    .todos > li {
-        border-radius: 12px;
-        margin-top: 2px;
-    }
+.inputLabel {
+    display: block;
+    font-size: 12px;
+}
+
+.input {
+    width: calc(100% - 6px);
+    font-size: 16px;
+    border-width: 1px;
+    padding: 2px;
+    margin-bottom: 10px;
+    background-color: transparent;
+}
+
+.todoInspect {
+    padding: 20px;
+    width: 90%;
+    display: flex;
+    background-color: var(--custom-mat-on-surface);
+}
+
+.todoForm {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.infoIcons mat-icon {
+    font-size: 12px;
+    padding: 2px;
+    height: 14px;
+    width: 14px;
+    vertical-align: middle;
+}
+
+.infoIcons > div {
+    display: inline-block;
+}
+
+.addItemContainer {
+    background-color: var(--mat-sys-surface);
+    top: calc(var(--nav-bar-height) + var(--controls-height));
+    position: sticky;
+    position: -webkit-sticky;
+    padding-bottom: 2px;
+}
+
+.addItem {
+    background-color: var(--custom-mat-on-surface);
+    padding: 5px;
+    height: 55px;
+}
+
+.addItem form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.addItem div {
+    display: flex;
+}
+
+.addItem > form > input {
+    height: 35px;
+    font-size: 18px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-radius: 0px;
+    background-color: transparent;
+}
+
+.addItem > form input:focus-visible {
+    outline: none;
+}
+
+.addItemActive {
+    height: 110px;
+}
+
+#datePickerHidden, #notifHidden, #repeatHidden {
+    font-size: 11px;
+}
+
+.newTodoLabel {
+    font-size: 11px;
+    padding: 0px;
+    margin: 0px;
+    border-width: 0px;
+    background-color: transparent;
+}
+
+.newTdCntrls {
+    flex-wrap: wrap;
 }

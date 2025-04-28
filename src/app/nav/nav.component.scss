@@ -6,6 +6,7 @@
     position: -webkit-sticky;
     top: 0px;
     height: 45px;
+    z-index: 10;
 }
 
 .navIcons {
@@ -22,7 +23,7 @@
 
 #nav a {
     text-decoration: none;
-    color: var(--mat-sys-primary);
+    color: var(--mat-sys-on-surface);
     border-radius: 5px;
     padding: 8px;
 }
