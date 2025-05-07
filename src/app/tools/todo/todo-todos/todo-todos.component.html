@@ -1,0 +1,61 @@
+<div class="todoContainer centered">
+    <div class="addItemContainer">
+        <div class="addItem rounded centered animated" [ngClass]="{ 'addItemActive' : addItemInputActive() }">
+            <form [formGroup]="addTodo">
+                <input type="text" placeholder="Add Todo" formControlName="title" />
+                <div class="newTdCntrls hiddenContainer" [ngClass]="{ 'unhideContainer' : addItemInputActive() }">
+                    <button mat-icon-button (click)="picker.open()">
+                        <mat-icon>calendar_today</mat-icon>
+                    </button>
+                    <span id="datePickerHidden" class="hiddenSpan"></span>
+                    <input id="datePickerInput" class="newTodoLabel hiddenContainer" [ngClass]="{ 'unhideHeight' : this.addTodo.controls.due.getRawValue() !== '' }" [matDatepicker]="picker" 
+                        (dateChange)="resizeInputLabel('datePickerInput', 'datePickerHidden', $event.value?.toLocaleDateString())" formControlName="due" readonly />
+                    <mat-datepicker touchUi #picker></mat-datepicker>
+                    <button mat-icon-button (click)="pickReminder()">
+                        <mat-icon>notifications</mat-icon>
+                    </button>
+                    <span id="notifHidden" class="hiddenSpan"></span>
+                    <input id="notifInput" class="newTodoLabel hiddenContainer" [ngClass]="{ 'unhideHeight' : this.addTodo.controls.notif.getRawValue() !== '' }" 
+                        formControlName="notif" readonly />
+                    <button mat-icon-button (click)="pickRepeat()">
+                        <mat-icon>loop</mat-icon>
+                    </button>
+                    <span id="repeatHidden" class="hiddenSpan"></span>
+                    <input id="repeatInput" class="newTodoLabel hiddenContainer" [ngClass]="{ 'unhideHeight' : this.addTodo.controls.repeat.getRawValue() !== '' }" 
+                        formControlName="repeat" readonly />
+                    <div class="rightBtn">
+                        <button mat-icon-button (click)="clearNewTodo()">
+                            <mat-icon class="colorError">clear</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="saveNewTodo()">
+                            <mat-icon class="colorPrimary">check</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <ul class="stacked todos">
+        @for(todo of _currTodos; track todo) {
+            <li class="todo rounded clickable">
+                <input class="clickable" type="checkbox" value="{{todo.completed}}">
+                <ul class="stacked">
+                    <li>{{todo.title}}</li>
+                    <li class="infoIcons">
+                        <mat-icon>list</mat-icon>{{todo.parentTitle}} 
+                        <div *ngIf="todo.due !== ''">
+                            &#x2022; 
+                            <mat-icon>calendar_today</mat-icon>{{getDueDesc(todo.due)}}
+                        </div>
+                        <div *ngIf="todo.notifLength !== ''">
+                            <mat-icon>notifications</mat-icon>
+                        </div>
+                        <div *ngIf="todo.repeatLength !== ''">
+                            <mat-icon>loop</mat-icon>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,13 +1,16 @@
 import { formatDate } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { todoItem } from '../todo.component';
 
 @Component({
   selector: 'app-todo-inspect',
   imports: [
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   templateUrl: './todo-inspect.component.html',
   styleUrl: './todo-inspect.component.scss'
@@ -18,7 +21,20 @@ export class TodoInspectComponent {
     notes: new FormControl(''),
     due: new FormControl(formatDate(new Date(), 'yyyy-MM-dd', 'en'))
   });
-  todo: any;
+  @Input()
+  _todo: todoItem = {
+    id: 0,
+    parentId: 0,
+    parentTitle: '',
+    title: '',
+    description: '',
+    completed: false,
+    due: '',
+    notifLength: '',
+    notifUnit: '',
+    repeatLength: '',
+    repeatUnit: ''
+  };
 
 
   saveTodo() {
@@ -26,7 +42,7 @@ export class TodoInspectComponent {
     let tmpNotes = this.todoForm.controls.notes.getRawValue();
     let tmpDue = this.todoForm.controls.due.getRawValue();
     if (tmpTitle && tmpNotes && tmpDue) {
-      this.setCurrentTodo(this.todo, tmpTitle, tmpNotes, new Date(tmpDue).toISOString().replace('Z', ''));
+      this.setCurrentTodo(this._todo, tmpTitle, tmpNotes, new Date(tmpDue).toISOString().replace('Z', ''));
     }
   }
 

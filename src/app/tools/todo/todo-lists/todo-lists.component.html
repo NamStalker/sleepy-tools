@@ -1,0 +1,26 @@
+<div class="listContainer centered">
+    <div class="addItemContainer">
+        <div class="addItem rounded centered animated" [ngClass]="{ 'addItemActive' : addListInputActive() }">
+            <form [formGroup]="addList">
+                <input type="text" placeholder="Add List" formControlName="title" />
+                <div class="newTdCntrls hiddenContainer" [ngClass]="{ 'unhideContainer' : addListInputActive() }">
+                    <div class="rightBtn">
+                        <button mat-icon-button (click)="clearNewList()">
+                            <mat-icon class="colorError">clear</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="saveNewList()">
+                            <mat-icon class="colorPrimary">check</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <ul class="stacked todos">
+        @for(list of _lists; track list) {
+            <li class="todo rounded clickable" (click)="switchList(list.id)">
+                <span>{{list.name}}</span>
+            </li>
+        }
+    </ul>
+</div>

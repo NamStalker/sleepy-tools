@@ -124,19 +124,6 @@
     background-color: transparent;
 }
 
-.todoInspect {
-    padding: 20px;
-    width: 90%;
-    display: flex;
-    background-color: var(--custom-mat-on-surface);
-}
-
-.todoForm {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-}
-
 .infoIcons mat-icon {
     font-size: 12px;
     padding: 2px;
@@ -207,4 +194,17 @@
 
 .newTdCntrls {
     flex-wrap: wrap;
+}
+
+.todoInspect {
+    padding: 20px;
+    width: 90%;
+    display: flex;
+    background-color: var(--custom-mat-on-surface);
+}
+
+.todoForm {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
 }
